@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extremeboost</title>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0b0b12;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      padding: 20px 16px 100px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #a879ff;
+    }
+
+    .online {
+      color: #65e6a1;
+      font-size: 12px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #35205d, #17132b);
+      border: 1px solid #533887;
+      border-radius: 22px;
+      padding: 25px 20px;
+      margin-bottom: 27px;
+    }
+
+    .hero small {
+      color: #c8a9ff;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      margin: 15px 0 10px;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      color: #c4bfd2;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-size: 21px;
+      margin-bottom: 15px;
+    }
+
+    .service {
+      background: #171722;
+      border: 1px solid #292938;
+      border-radius: 17px;
+      padding: 18px;
+      margin-bottom: 12px;
+    }
+
+    .service-icon {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .service h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .service p {
+      color: #aaaaba;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .service button {
+      width: 100%;
+      border: none;
+      background: #8051d9;
+      color: white;
+      padding: 13px;
+      border-radius: 11px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .service button:active {
+      opacity: 0.8;
+    }
+
+    .notice {
+      background: #211c30;
+      border: 1px solid #45345f;
+      color: #c9b8e7;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 18px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #14141e;
+      border-top: 1px solid #292938;
+      display: flex;
+      justify-content: space-around;
+      padding: 13px 5px;
+      padding-bottom: max(13px, env(safe-area-inset-bottom));
+    }
+
+    .nav-item {
+      background: none;
+      border: none;
+      color: #88889b;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .nav-item.active {
+      color: #b48aff;
+    }
+
+    .nav-item div {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .field {
+      width: 100%;
+      background: #171722;
+      border: 1px solid #39394b;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      margin: 10px 0 16px;
+      font-size: 14px;
+    }
+
+    .primary {
+      width: 100%;
+      border: none;
+      background: #8051d9;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">EXTREME<span>BOOST</span></div>
+    <div class="online">● ONLINE</div>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+
+      <div class="hero">
+        <small>YOUR GAMING SERVICE</small>
+        <h1>Играй.<br>Развивайся.<br>Побеждай.</h1>
+        <p>
+          Персональные тренировки и помощь
+          в развитии игровых навыков Fortnite.
+        </p>
+      </div>
+
+      <h2 class="section-title">Наши услуги</h2>
+
+      <div class="service">
+        <div class="service-icon">🎯</div>
+        <h3>Персональные тренировки</h3>
+        <p>Индивидуальные занятия с опытным специалистом.</p>
+        <button onclick="order('Персональные тренировки')">
+          Выбрать услугу
+        </button>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">📈</div>
+        <h3>Rank Boost — Account Format</h3>
+        <p>
+          Отдельный формат услуги. Приём заказа возможен
+          только после проверки допустимости способа
+          выполнения по правилам игры.
+        </p>
+        <button onclick="order('Rank Boost — Account Format')">
+          Оставить заявку
+        </button>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">👥</div>
+        <h3>Duo Rank Practice</h3>
+        <p>Совместные игровые сессии с исполнителем.</p>
+        <button onclick="order('Duo Rank Practice')">
+          Выбрать услугу
+        </button>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🎥</div>
+        <h3>Анализ матчей</h3>
+        <p>Разбор записей игр, ошибок и игровых решений.</p>
+        <button onclick="order('Анализ матчей')">
+          Выбрать услугу
+        </button>
+      </div>
+
+      <div class="notice">
+        🔒 Мы не запрашиваем пароли, коды подтверждения
+        или другие секретные данные игровых аккаунтов.
+        Заказы на недопустимые форматы не принимаются.
+      </div>
+    </section>
+
+    <section id="orders" class="page">
+      <h2 class="section-title">Мои заказы</h2>
+      <div class="service">
+        <p>Пока у тебя нет заказов.</p>
+      </div>
+    </section>
+
+    <section id="profile" class="page">
+      <h2 class="section-title">Профиль</h2>
+      <div class="service">
+        <h3 id="username">Игрок</h3>
+        <p>Добро пожаловать в Extremeboost!</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="showPage('home', this)">
+      <div>⌂</div>Главная
+    </button>
+
+    <button class="nav-item" onclick="showPage('orders', this)">
+      <div>▤</div>Заказы
+    </button>
+
+    <button class="nav-item" onclick="showPage('profile', this)">
+      <div>♙</div>Профиль
+    </button>
+  </nav>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+
+    tg.ready();
+    tg.expand();
+
+    if (tg.initDataUnsafe?.user) {
+      const user = tg.initDataUnsafe.user;
+      document.getElementById("username").textContent =
+        user.first_name || "Игрок";
+    }
+
+    function showPage(page, button) {
+      document.querySelectorAll(".page").forEach(el => {
+        el.classList.remove("active");
+      });
+
+      document.getElementById(page).classList.add("active");
+
+      document.querySelectorAll(".nav-item").forEach(el => {
+        el.classList.remove("active");
+      });
+
+      button.classList.add("active");
+    }
+
+    function order(service) {
+      const message =
+        "Здравствуйте! Хочу оставить заявку: " + service;
+
+      if (tg.initData) {
+        tg.sendData(JSON.stringify({
+          action: "new_order",
+          service: service
+        }));
+        tg.close();
+      } else {
+        alert(message);
+      }
+    }
+  </script>
+
+</body>
+</html>
